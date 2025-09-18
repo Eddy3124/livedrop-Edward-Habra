@@ -1,0 +1,57 @@
+# Detailed Architecture Notes
+
+## Service Breakdown
+
+### User Service Responsibilities
+- User authentication and session management
+- Follow/unfollow operations
+- User profile management
+- Privacy settings and preferences
+
+### Product Service Responsibilities
+- Product catalog management
+- Drop scheduling and lifecycle management
+- Inventory tracking and reservations
+- Search indexing and filtering
+
+### Order Service Responsibilities
+- Order placement and validation
+- Payment processing integration
+- Inventory deduction and rollback
+- Order status tracking and notifications
+
+### Notification Service Responsibilities
+- WebSocket connection management
+- Push notification delivery
+- Email notification fallback
+- Notification preference management
+
+## Database Schema Details
+
+### Indexing Strategy
+- B-tree indexes for equality queries
+- Partial indexes for filtered queries
+- Composite indexes for multi-column sorts
+- Hash indexes for exact matches
+
+### Partitioning Strategy
+- Range partitioning by date for orders
+- Hash partitioning by user_id for follows
+- List partitioning by status for drops
+
+## Caching Layers Explained
+
+### L1 Cache (Application Memory)
+- JVM heap cache for hot objects
+- 50MB per instance limit
+- 1-minute TTL maximum
+
+### L2 Cache (Redis)
+- Distributed cache cluster
+- 16GB memory per node
+- 3-node cluster for high availability
+
+### L3 Cache (CDN)
+- CloudFlare edge locations
+- Geographic distribution
+- Smart caching rules based on content type
