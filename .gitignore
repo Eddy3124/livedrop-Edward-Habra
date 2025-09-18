@@ -1,0 +1,26 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Node modules (if you add any tools)
+node_modules/
+
+# Python (if you add any scripts)
+__pycache__/
+*.pyc
