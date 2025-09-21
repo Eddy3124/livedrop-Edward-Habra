@@ -1,1 +1,24 @@
+# ShopLite RFC
 
+[... existing RFC content ...]
+
+## AI Touchpoints
+
+ShopLite will implement two initial AI capabilities to improve user experience and operational efficiency:
+
+1. **Smart Search Suggestions** - AI-powered typeahead that understands user intent and surfaces relevant products
+2. **Support Chat Assistant** - Automated customer service for order inquiries and FAQ resolution
+
+These touchpoints were selected based on their potential to directly impact conversion rates and support costs while maintaining low integration risk. Both leverage existing data sources (product catalog and FAQ content) and provide clear fallback mechanisms.
+
+For detailed implementation specifications, cost analysis, and technical requirements, see:
+- [AI Capability Map](/docs/ai-first/ai-capability-map.md)
+- [Touchpoint Specifications](/docs/ai-first/touchpoints.md) 
+- [Cost Model](/docs/ai-first/cost-model.md)
+
+**Estimated Impact:**
+- 15% improvement in search-to-purchase conversion
+- 60% reduction in routine support ticket volume
+- Monthly investment: ~$102k with expected positive ROI within 90 days
+
+[... rest of existing RFC content ...]
