@@ -1,1 +1,51 @@
+# AI Touchpoint Cost Model
 
+## Assumptions
+- Model: GPT-4o-mini at $0.15/1K prompt tokens, $0.60/1K completion tokens
+- Smart Search Suggestions:
+  - Avg tokens in: 800 (product catalog context + query)
+  - Avg tokens out: 150 (5-8 suggestions with metadata)
+  - Requests/day: 50,000
+  - Cache hit rate: 70%
+- Support Chat Assistant:
+  - Avg tokens in: 1,200 (FAQ content + order data + user question)
+  - Avg tokens out: 300 (detailed response with next steps)
+  - Requests/day: 1,000
+  - Cache hit rate: 30%
+
+## Calculations
+
+### Cost per Action Formula
+Cost/action = (tokens_in/1000 × prompt_price) + (tokens_out/1000 × completion_price)
+
+### Smart Search Suggestions
+Cost/action = (800/1000 × $0.15) + (150/1000 × $0.60)
+Cost/action = $0.12 + $0.09 = **$0.21**
+
+Daily cost = $0.21 × 50,000 × (1 - 0.70) = $0.21 × 50,000 × 0.30 = **$3,150/day**
+
+### Support Chat Assistant
+Cost/action = (1,200/1000 × $0.15) + (300/1000 × $0.60)
+Cost/action = $0.18 + $0.18 = **$0.36**
+
+Daily cost = $0.36 × 1,000 × (1 - 0.30) = $0.36 × 1,000 × 0.70 = **$252/day**
+
+## Results Summary
+- **Smart Search Suggestions**: Cost/action = $0.21, Daily = $3,150
+- **Support Chat Assistant**: Cost/action = $0.36, Daily = $252
+- **Total Daily Cost**: $3,402
+- **Monthly Estimated Cost**: ~$102,060
+
+## Cost Optimization Levers
+
+### If Over Budget:
+1. **Reduce search context**: Limit product catalog context to 400 tokens (top categories + recent searches) - could reduce search costs by ~40%
+2. **Increase cache hit rates**: Implement smarter caching for search (target 85% hit rate) and support (target 50% hit rate)
+3. **Model downgrade**: Switch to Llama 3.1 8B Instruct ($0.05 prompt, $0.20 completion) for 70% cost reduction
+4. **Request throttling**: Limit search suggestions to users with >3 characters typed, reduce support to business hours only
+5. **Hybrid approach**: Use smaller model for simple queries, GPT-4o-mini for complex cases
+
+### Expected ROI Justification:
+- Search improvements target 15% increase in conversion rate
+- Support automation could reduce human support costs by $8,000+/month
+- Combined monthly value should exceed $102k investment through increased sales and reduced labor costs
