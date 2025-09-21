@@ -1,1 +1,55 @@
+# AI Capability Map
 
+## Candidate AI Capabilities
+
+### 1. Smart Search Suggestions
+- **Intent**: Find products faster with intelligent typeahead
+- **Inputs**: Product catalog, user query, search history
+- **Risk**: 2 (low)
+- **p95 latency**: 250ms
+- **Est. cost/action**: $0.003
+- **Fallback**: Static popular searches
+
+### 2. Support Chat Assistant
+- **Intent**: Get instant help with orders and policies
+- **Inputs**: FAQ/policies markdown, order-status API, user question
+- **Risk**: 3 (medium)
+- **p95 latency**: 1000ms
+- **Est. cost/action**: $0.018
+- **Fallback**: Human handoff form
+
+### 3. Dynamic Product Descriptions
+- **Intent**: See AI-enhanced product details
+- **Inputs**: Product specs, similar items, reviews
+- **Risk**: 4 (high)
+- **p95 latency**: 2000ms
+- **Est. cost/action**: $0.025
+- **Fallback**: Original product description
+
+### 4. Personalized Recommendations
+- **Intent**: Discover products based on preferences
+- **Inputs**: User history, product catalog, browsing data
+- **Risk**: 4 (high)
+- **p95 latency**: 800ms
+- **Est. cost/action**: $0.012
+- **Fallback**: Popular/trending items
+
+### 5. Inventory Optimization
+- **Intent**: Predict stock needs automatically
+- **Inputs**: Sales data, seasonal trends, supplier info
+- **Risk**: 5 (very high)
+- **p95 latency**: N/A
+- **Est. cost/action**: $0.045
+- **Fallback**: Manual inventory planning
+
+### 6. Review Sentiment Analysis
+- **Intent**: Understand customer feedback quickly
+- **Inputs**: Product reviews, ratings
+- **Risk**: 2 (low)
+- **p95 latency**: 500ms
+- **Est. cost/action**: $0.008
+- **Fallback**: Star ratings only
+
+## Why These Two
+
+We selected **Smart Search Suggestions** and **Support Chat Assistant** as our initial AI touchpoints because they directly address ShopLite's core conversion and support efficiency challenges. Smart search suggestions will improve product discovery and reduce bounce rate by helping users find relevant items faster, while the support assistant will decrease support ticket volume and response time by handling common queries about orders and policies. Both capabilities have low-to-medium integration risk, leverage existing data sources (product catalog and FAQ content), and provide clear fallback mechanisms. These touchpoints offer measurable impact on key business metrics while minimizing technical complexity for our first AI implementation sprint.
