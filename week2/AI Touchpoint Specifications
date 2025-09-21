@@ -1,1 +1,117 @@
+# AI Touchpoint Specifications
 
+## Smart Search Suggestions
+
+### Problem Statement
+Users often struggle to find relevant products on ShopLite, leading to high bounce rates and abandoned searches. Traditional keyword matching fails to understand user intent and doesn't surface related or alternative products that might better meet customer needs. An AI-powered search suggestion system can interpret natural language queries, understand product relationships, and provide intelligent typeahead suggestions that guide users to successful product discoveries.
+
+### Happy Path
+1. User begins typing in search box (e.g., "wireless headph")
+2. System captures partial query after 3+ characters
+3. AI model receives query + product catalog context via API
+4. Model generates 5-8 ranked suggestions including exact matches and related products
+5. Suggestions appear in dropdown with product images and prices
+6. User selects suggestion or continues typing for refined results
+7. Selection triggers product search with improved relevance scoring
+8. User finds desired product and proceeds to purchase
+
+### Grounding & Guardrails
+- **Source of truth**: Product catalog (10k SKUs), search analytics, category taxonomy
+- **Retrieval scope**: Active inventory only, exclude out-of-stock items
+- **Max context**: 2,000 tokens (product titles, categories, top search terms)
+- **Refuse scope**: No suggestions for non-product queries, inappropriate content, or competitor products
+
+### Human-in-the-Loop
+- **Escalation triggers**: No relevant suggestions found (confidence < 0.3)
+- **UI surface**: "Browse all categories" link appears when AI suggestions are low-confidence
+- **Reviewer**: Product team reviews suggestion quality weekly via analytics dashboard
+- **SLA**: Manual review of flagged suggestions within 24 hours
+
+### Latency Budget
+- Query preprocessing: 20ms
+- Model inference: 150ms
+- Result ranking: 30ms
+- Response formatting: 25ms
+- Network/rendering: 25ms
+- **Total: 250ms** (within 300ms p95 target)
+- **Cache strategy**: 70% hit rate on popular queries, 1-hour TTL
+
+### Error & Fallback Behavior
+- Model timeout: Display static popular searches from last 7 days
+- API failure: Show category-based suggestions
+- No results: Redirect to browse page with related categories
+- Malformed query: Basic text matching against product titles
+
+### PII Handling
+- **Data leaving app**: Search queries only (no user identifiers)
+- **Redaction rules**: Remove email addresses, phone numbers from queries
+- **Logging policy**: Search terms logged for 30 days, no user correlation
+
+### Success Metrics
+- **Product metrics**: 
+  - Search-to-click rate: (clicks on suggestions) / (total suggestions shown)
+  - Search success rate: (searches leading to product views) / (total searches)
+- **Business metric**: 
+  - Search conversion rate: (purchases from search) / (search sessions) × 100
+
+### Feasibility Note
+Product catalog is available via existing inventory API with structured fields (title, category, price, stock status). We can use GPT-4o-mini with semantic similarity search for initial prototype. Next step would be to build a simple typeahead endpoint that queries the model with product context and returns JSON suggestions, testing with 100 real search queries from analytics data.
+
+---
+
+## Support Chat Assistant
+
+### Problem Statement
+ShopLite receives high volumes of repetitive support requests about order status, return policies, and basic account questions, overwhelming the support team and creating long wait times for customers. Many queries could be resolved instantly with access to existing order data and FAQ information, but customers currently must wait for human agents or struggle to find answers in static help pages.
+
+### Happy Path
+1. User clicks "Chat Support" button on order page or help section
+2. Chat widget opens with greeting and suggested questions
+3. User types question about order status or policy
+4. System identifies query type and retrieves relevant context (order data or FAQ)
+5. AI assistant generates helpful response with specific order details or policy info
+6. Response includes relevant links and next steps
+7. User problem is resolved, or escalated to human if needed
+8. Chat session ends with satisfaction rating
+
+### Grounding & Guardrails
+- **Source of truth**: FAQ/policies markdown, order-status API, shipping policies
+- **Retrieval scope**: User's own orders only, public policy information
+- **Max context**: 3,000 tokens (order details + relevant FAQ sections)
+- **Refuse scope**: No financial advice, technical support beyond scope, other users' order info
+
+### Human-in-the-Loop
+- **Escalation triggers**: User explicitly requests human agent, confidence < 0.4, payment disputes
+- **UI surface**: "Talk to human agent" button always visible, automatic escalation for complex issues
+- **Reviewer**: Support team lead reviews escalated conversations
+- **SLA**: Human agent response within 15 minutes during business hours
+
+### Latency Budget
+- Query analysis: 50ms
+- Context retrieval (order/FAQ): 200ms
+- Model inference: 700ms
+- Response formatting: 100ms
+- UI rendering: 150ms
+- **Total: 1,200ms** (exactly at p95 target)
+- **Cache strategy**: 30% hit rate on common FAQ questions, 4-hour TTL
+
+### Error & Fallback Behavior
+- Order API timeout: Show generic status message with tracking link
+- Model failure: Display relevant FAQ sections based on keyword matching
+- No context found: Escalate to human agent immediately
+- Rate limiting: Queue user with estimated wait time
+
+### PII Handling
+- **Data leaving app**: Order IDs, general inquiry text (no payment info)
+- **Redaction rules**: Mask credit card numbers, SSNs, full addresses before processing
+- **Logging policy**: Chat logs retained 90 days, order IDs encrypted at rest
+
+### Success Metrics
+- **Product metrics**:
+  - Resolution rate: (issues resolved without human escalation) / (total chat sessions)
+  - User satisfaction: Average rating on post-chat survey (1-5 scale)
+- **Business metric**:
+  - Support cost reduction: (Previous monthly support hours - Current support hours) / Previous support hours × 100
+
+### Feasibility Note
+Order status API is already available with GET /orders/{id} endpoint returning JSON with status, tracking, and dates. FAQ content exists as structured markdown. We can use GPT-4o-mini with retrieval-augmented generation, feeding order details and relevant FAQ sections as context. Next prototype step: build a simple chat endpoint that matches user queries to FAQ topics and formats responses with order-specific data when applicable.
