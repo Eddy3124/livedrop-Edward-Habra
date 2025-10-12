@@ -4,36 +4,42 @@ import Product from './pages/product'
 import Cart from './pages/cart'
 import Checkout from './pages/checkout'
 import OrderStatus from './pages/order-status'
-import Header from './components/organisms/Header'
-import Footer from './components/organisms/Footer'
-import CartDrawer from './components/organisms/CartDrawer'
-import SupportPanel from './components/organisms/SupportPanel'
-import { useCartStore } from './lib/store'
+import CatalogTemplate from './components/templates/CatalogTemplate'
+import ProductTemplate from './components/templates/ProductTemplate'
+import CartTemplate from './components/templates/CartTemplate'
+import CheckoutTemplate from './components/templates/CheckoutTemplate'
+import OrderStatusTemplate from './components/templates/OrderStatusTemplate'
 
 function App() {
-  const isCartOpen = useCartStore((state) => state.isCartOpen)
-  const toggleCart = useCartStore((state) => state.toggleCart)
-  const isSupportOpen = useCartStore((state) => state.isSupportOpen)
-  const toggleSupport = useCartStore((state) => state.toggleSupport)
-
   return (
     <Router>
-      <div className="min-h-screen flex flex-col">
-        <Header onCartClick={toggleCart} onSupportClick={toggleSupport} />
-        <main className="flex-grow container mx-auto px-4 py-8">
-          <Routes>
-            <Route path="/" element={<Catalog />} />
-            <Route path="/p/:id" element={<Product />} />
-            <Route path="/cart" element={<Cart />} />
-            <Route path="/checkout" element={<Checkout />} />
-            <Route path="/order/:id" element={<OrderStatus />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-      
-      <CartDrawer isOpen={isCartOpen} onClose={toggleCart} />
-      <SupportPanel isOpen={isSupportOpen} onClose={toggleSupport} />
+      <Routes>
+        <Route path="/" element={
+          <CatalogTemplate>
+            <Catalog />
+          </CatalogTemplate>
+        } />
+        <Route path="/p/:id" element={
+          <ProductTemplate>
+            <Product />
+          </ProductTemplate>
+        } />
+        <Route path="/cart" element={
+          <CartTemplate>
+            <Cart />
+          </CartTemplate>
+        } />
+        <Route path="/checkout" element={
+          <CheckoutTemplate>
+            <Checkout />
+          </CheckoutTemplate>
+        } />
+        <Route path="/order/:id" element={
+          <OrderStatusTemplate>
+            <OrderStatus />
+          </OrderStatusTemplate>
+        } />
+      </Routes>
     </Router>
   )
 }
