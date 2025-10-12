@@ -1,1 +1,162 @@
-
+[
+  {
+    "id": "1",
+    "title": "Premium Wireless Headphones",
+    "price": 129.99,
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "audio", "wireless"],
+    "stockQty": 15
+  },
+  {
+    "id": "2",
+    "title": "Ergonomic Office Chair",
+    "price": 249.99,
+    "image": "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["furniture", "office", "ergonomic"],
+    "stockQty": 8
+  },
+  {
+    "id": "3",
+    "title": "Smart Fitness Watch",
+    "price": 199.99,
+    "image": "https://images.unsplash.com/photo-1544117519-31a4b719223d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "fitness", "wearable"],
+    "stockQty": 22
+  },
+  {
+    "id": "4",
+    "title": "Organic Cotton T-Shirt",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["clothing", "cotton", "organic"],
+    "stockQty": 50
+  },
+  {
+    "id": "5",
+    "title": "Stainless Steel Water Bottle",
+    "price": 19.99,
+    "image": "https://images.unsplash.com/photo-1602143407151-7111542de6e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["drinkware", "eco-friendly", "stainless"],
+    "stockQty": 35
+  },
+  {
+    "id": "6",
+    "title": "Wireless Charging Pad",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "charging", "wireless"],
+    "stockQty": 20
+  },
+  {
+    "id": "7",
+    "title": "Minimalist Backpack",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["bags", "travel", "minimalist"],
+    "stockQty": 12
+  },
+  {
+    "id": "8",
+    "title": "Ceramic Plant Pot",
+    "price": 14.99,
+    "image": "https://images.unsplash.com/photo-1485955900006-10f4d9d6711f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["home", "decor", "ceramic"],
+    "stockQty": 30
+  },
+  {
+    "id": "9",
+    "title": "Bluetooth Speaker",
+    "price": 89.99,
+    "image": "https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "audio", "bluetooth"],
+    "stockQty": 18
+  },
+  {
+    "id": "10",
+    "title": "Yoga Mat",
+    "price": 29.99,
+    "image": "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["fitness", "yoga", "exercise"],
+    "stockQty": 25
+  },
+  {
+    "id": "11",
+    "title": "LED Desk Lamp",
+    "price": 49.99,
+    "image": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["home", "lighting", "led"],
+    "stockQty": 15
+  },
+  {
+    "id": "12",
+    "title": "Wireless Mouse",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "computer", "wireless"],
+    "stockQty": 30
+  },
+  {
+    "id": "13",
+    "title": "Insulated Travel Mug",
+    "price": 24.99,
+    "image": "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["drinkware", "travel", "insulated"],
+    "stockQty": 40
+  },
+  {
+    "id": "14",
+    "title": "Running Shoes",
+    "price": 119.99,
+    "image": "https://images.unsplash.com/photo-1549298916-b41d501d3772?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["footwear", "running", "athletic"],
+    "stockQty": 20
+  },
+  {
+    "id": "15",
+    "title": "Bamboo Cutting Board",
+    "price": 22.99,
+    "image": "https://images.unsplash.com/photo-1592899677977-9c10ca588bbd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["kitchen", "bamboo", "eco-friendly"],
+    "stockQty": 18
+  },
+  {
+    "id": "16",
+    "title": "Smartphone Stand",
+    "price": 16.99,
+    "image": "https://images.unsplash.com/photo-1586953208448-b95a79798f07?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "accessories", "stand"],
+    "stockQty": 35
+  },
+  {
+    "id": "17",
+    "title": "Cotton Throw Blanket",
+    "price": 39.99,
+    "image": "https://images.unsplash.com/photo-1585476199299-4b6b5d4b0b1f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["home", "blanket", "cotton"],
+    "stockQty": 15
+  },
+  {
+    "id": "18",
+    "title": "Stainless Steel Cutlery Set",
+    "price": 34.99,
+    "image": "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["kitchen", "cutlery", "stainless"],
+    "stockQty": 12
+  },
+  {
+    "id": "19",
+    "title": "Wireless Earbuds",
+    "price": 79.99,
+    "image": "https://images.unsplash.com/photo-1572569511254-d8f925fe2cbb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["electronics", "audio", "wireless"],
+    "stockQty": 25
+  },
+  {
+    "id": "20",
+    "title": "Canvas Tote Bag",
+    "price": 19.99,
+    "image": "https://images.unsplash.com/photo-1590766940554-103e1d274b56?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80",
+    "tags": ["bags", "canvas", "eco-friendly"],
+    "stockQty": 40
+  }
+]
