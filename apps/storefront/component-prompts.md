@@ -53,3 +53,20 @@
 
 ### SupportPanel
 - Prompt: "Create a SupportPanel component that slides in from the right. Include conversation history, input field, and submit button. Implement the askQuestion function from the engine."
+
+## Templates
+
+### CatalogTemplate
+- Prompt: "Create a CatalogTemplate that provides the layout for the catalog page. Include Header, main content area, Footer, CartDrawer, and SupportPanel."
+
+### ProductTemplate
+- Prompt: "Create a ProductTemplate that provides the layout for the product detail page. Include Header, main content area, Footer, CartDrawer, and SupportPanel."
+
+### CartTemplate
+- Prompt: "Create a CartTemplate that provides the layout for the shopping cart page. Include Header, main content area, Footer, CartDrawer, and SupportPanel."
+
+### CheckoutTemplate
+- Prompt: "Create a CheckoutTemplate that provides the layout for the checkout page. Include Header, main content area, Footer, CartDrawer, and SupportPanel."
+
+### OrderStatusTemplate
+- Prompt: "Create an OrderStatusTemplate that provides the layout for the order status page. Include Header, main content area, Footer, CartDrawer, and SupportPanel."
