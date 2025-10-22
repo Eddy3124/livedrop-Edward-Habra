@@ -100,3 +100,35 @@ export async function getOrderStatus(id: string): Promise<OrderStatus> {
     total
   }
 }
+import { Product, CartItem, OrderStatus } from './types'
+
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8080/api'
+
+async function handleResponse(res: Response) {
+  if (!res.ok) {
+    const json = await res.json().catch(() => ({}))
+    const err = new Error(json.error || res.statusText)
+    throw err
+  }
+  return res.json()
+}
+
+export async function listProducts(): Promise<Product[]> {
+  const res = await fetch(`${API}/products`)
+  return handleResponse(res)
+}
+
+export async function getProduct(id: string): Promise<Product> {
+  const res = await fetch(`${API}/products/${id}`)
+  return handleResponse(res)
+}
+
+export async function placeOrder(payload: { customerEmail?: string, customerId?: string, items: CartItem[] }): Promise<{ id: string }> {
+  const res = await fetch(`${API}/orders`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
+  return handleResponse(res)
+}
+
+export async function getOrderStatus(id: string): Promise<OrderStatus> {
+  const res = await fetch(`${API}/orders/${id}`)
+  return handleResponse(res)
+}
