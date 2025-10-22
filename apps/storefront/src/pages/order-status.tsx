@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { getOrderStatus } from '../lib/api'
 import { OrderStatus as OrderStatusType } from '../lib/types'
@@ -6,28 +6,44 @@ import { formatCurrency, formatDate } from '../lib/format'
 import Button from '../components/atoms/Button'
 import Breadcrumb from '../components/molecules/Breadcrumb'
 import StatusBadge from '../components/atoms/StatusBadge'
+import { createOrderEventSource } from '../lib/sse-client'
 
 export default function OrderStatus() {
   const { id } = useParams<{ id: string }>()
   const [order, setOrder] = useState<OrderStatusType | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const esRef = useRef<any | null>(null)
   
   useEffect(() => {
-    const fetchOrderStatus = async () => {
+    let closed = false
+    const init = async () => {
       if (!id) return
-      
       try {
         const orderData = await getOrderStatus(id)
-        setOrder(orderData)
+        if (!closed) setOrder(orderData)
       } catch (err) {
-        setError('Failed to fetch order status. Please check the order ID and try again.')
+        if (!closed) setError('Failed to fetch order status. Please check the order ID and try again.')
       } finally {
-        setLoading(false)
+        if (!closed) setLoading(false)
       }
+      // Connect SSE
+      esRef.current = createOrderEventSource(id, (data: any) => {
+        setOrder(prev => ({ ...(prev as any), status: data.status }))
+        if (data.status === 'DELIVERED') {
+          esRef.current?.close()
+        }
+      }, (err:any) => {
+        console.warn('SSE error', err)
+      })
     }
-    
-    fetchOrderStatus()
+
+    init()
+
+    return () => {
+      closed = true
+      esRef.current?.close()
+    }
   }, [id])
   
   if (loading) {
